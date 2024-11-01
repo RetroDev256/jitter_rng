@@ -1,4 +1,4 @@
-### Say hello to easy-peasy true random!
+# Say hello to easy-peasy true random!
 
 This library exposes a std.Random interface and jitter() function -
 both will use CPU timing jitter to generate random numbers.
@@ -14,6 +14,6 @@ We make the following assumptions:
 While all of these assumptions must be held to ensure current theory,
 in many cases not all of them are necessary to gain true randomness.
 
-## Disclaimer:
+### Disclaimer:
 
 Please use battle-tested software, I provide no guaruntees whatsoever.
