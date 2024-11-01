@@ -15,6 +15,6 @@ fn perThread() noreturn {
 
     while (true) {
         root.random.bytes(&buffer);
-        writer.writeAll(&buffer) catch unreachable;
+        writer.writeAll(&buffer) catch {};
     }
 }
