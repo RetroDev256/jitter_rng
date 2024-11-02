@@ -8,14 +8,16 @@ fn fill(_: *const @This(), buf: []u8) void {
 
 /// Returns credible randomness based on CPU jitter entropy
 pub fn jitter() u8 {
-    // Expect 1/16 bits of entropy per sample, to give us some overhead
-    const samples_per_bit = 16;
+    // Expect 1/12 bits of entropy per sample, to give us some overhead
+    const samples_per_bit = 12;
+
+    const initial = std.time.Instant.now() catch return 0;
 
     var state: u32 = 0;
     for (0..samples_per_bit * 8) |_| {
-        const sample: i128 = std.time.nanoTimestamp();
-        const time_raw: u128 = @bitCast(sample);
-        state ^= @as(u32, @truncate(time_raw));
+        const sample = std.time.Instant.now() catch return 0;
+        const duration = sample.since(initial);
+        state ^= @as(u32, @truncate(duration));
         state = std.hash.uint32(state);
     }
 

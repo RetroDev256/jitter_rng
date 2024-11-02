@@ -22,3 +22,5 @@ We harvest this entropy simply by sampling the high resolution CPU timer.
 ### Disclaimer:
 
 Please use battle-tested software, I provide no guaruntees whatsoever.
+In the case that your computer doesn't support this high resolution timer,
+the RNG may simply return 0 at all times. Beware.
